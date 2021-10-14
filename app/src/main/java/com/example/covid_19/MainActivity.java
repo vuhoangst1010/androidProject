@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Spinner spinner;
     String[] types = {"cases", "deaths", "recovered", "active"};
     private List<ModelClass> modelClasses;
+    private List<NewsClass> newsClasses;
     private List<ModelClass> modelClasses2;
     PieChart pieChart;
     private RecyclerView recyclerView;
@@ -71,18 +72,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         spinner.setAdapter(arrayAdapter);
 
-        ApiUtilities.getApiInterface().getCountryData().enqueue(new Callback<List<ModelClass>>() {
-            @Override
-            public void onResponse(Call<List<ModelClass>> call, Response<List<ModelClass>> response) {
-                modelClasses2.addAll(response.body());
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<List<ModelClass>> call, Throwable t) {
-
-            }
-        });
+//        ApiUtilities.getApiInterface().getCountryData().enqueue(new Callback<List<ModelClass>>() {
+//            @Override
+//            public void onResponse(Call<List<ModelClass>> call, Response<List<ModelClass>> response) {
+//                modelClasses2.addAll(response.body());
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<ModelClass>> call, Throwable t) {
+//
+//            }
+//        });
 
         adapter = new Adapter(getApplicationContext(), modelClasses2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -95,20 +96,52 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onCountrySelected() {
                 country = countryCodePicker.getSelectedCountryName();
-                fetchData();
+//                fetchData();
             }
         });
 
-        fetchData();
+//        fetchData();
+        fetchDataNews();
 
     }
 
-    private void fetchData() {
-        ApiUtilities.getApiInterface().getCountryData().enqueue(new Callback<List<ModelClass>>() {
+//    private void fetchData() {
+//        ApiUtilities.getApiInterface().getCountryData().enqueue(new Callback<List<ModelClass>>() {
+//            @Override
+//            public void onResponse(Call<List<ModelClass>> call, Response<List<ModelClass>> response) {
+//                modelClasses.addAll(response.body());
+//                for (int i = 0; i < modelClasses.size(); i++) {
+//                    if (modelClasses.get(i).getCountry().equals(country)) {
+//                        active.setText((modelClasses.get(i).getActive()));
+//                        deathsToday.setText((modelClasses.get(i).getTodayDeaths()));
+//                        recoveredToday.setText((modelClasses.get(i).getTodayRecovered()));
+//                        totalToday.setText((modelClasses.get(i).getTodayCase()));
+//                        total.setText((modelClasses.get(i).getCases()));
+//                        deaths.setText((modelClasses.get(i).getDeaths()));
+//                        recovered.setText((modelClasses.get(i).getRecovered()));
+//                        int active, total, recovered, deaths;
+//                        active = Integer.parseInt(modelClasses.get(i).getActive());
+//                        total = Integer.parseInt(modelClasses.get(i).getCases());
+//                        recovered = Integer.parseInt(modelClasses.get(i).getRecovered());
+//                        deaths = Integer.parseInt(modelClasses.get(i).getDeaths());
+//                        updateGraph(active, total, recovered, deaths);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<ModelClass>> call, Throwable t) {
+//                Toast.makeText(MainActivity.this, "Call api error", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//    }
+    private void fetchDataNews() {
+        ApiUtilities.getApiInterfaceNews().getNews().enqueue(new Callback<List<NewsClass>>() {
             @Override
-            public void onResponse(Call<List<ModelClass>> call, Response<List<ModelClass>> response) {
-                modelClasses.addAll(response.body());
-                for (int i = 0; i < modelClasses.size(); i++) {
+            public void onResponse(Call<List<NewsClass>> call, Response<List<NewsClass>> response) {
+                newsClasses.addAll(response.body());
+                for (int i = 0; i < newsClasses.size(); i++) {
                     if (modelClasses.get(i).getCountry().equals(country)) {
                         active.setText((modelClasses.get(i).getActive()));
                         deathsToday.setText((modelClasses.get(i).getTodayDeaths()));
@@ -128,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
 
             @Override
-            public void onFailure(Call<List<ModelClass>> call, Throwable t) {
+            public void onFailure(Call<List<NewsClass>> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Call api error", Toast.LENGTH_SHORT).show();
             }
         });
