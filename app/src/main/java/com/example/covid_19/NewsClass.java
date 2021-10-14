@@ -1,81 +1,104 @@
 package com.example.covid_19;
 
+import java.util.Date;
+
 public class NewsClass {
-    private String sources, categories, countries, languages , keywords , sort;
-    private int offset , limit ;
+    private String author, title, description, url,source, image, category, language, country;
+    private Date published_at;
 
-    public NewsClass(String sources, String categories, String countries, String languages, String keywords, String sort, int offset, int limit) {
-        this.sources = sources;
-        this.categories = categories;
-        this.countries = countries;
-        this.languages = languages;
-        this.keywords = keywords;
-        this.sort = sort;
-        this.offset = offset;
-        this.limit = limit;
+    public NewsClass() {
     }
 
-    public String getSources() {
-        return sources;
+    public NewsClass(String author, String title, String description, String url, String source, String image, String category, String language, String country, Date published_at) {
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.source = source;
+        this.image = image;
+        this.category = category;
+        this.language = language;
+        this.country = country;
+        this.published_at = published_at;
     }
 
-    public void setSources(String sources) {
-        this.sources = sources;
+    public String getAuthor() {
+        return author;
     }
 
-    public String getCategories() {
-        return categories;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public void setCategories(String categories) {
-        this.categories = categories;
+    public String getTitle() {
+        return title;
     }
 
-    public String getCountries() {
-        return countries;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setCountries(String countries) {
-        this.countries = countries;
+    public String getDescription() {
+        return description;
     }
 
-    public String getLanguages() {
-        return languages;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setLanguages(String languages) {
-        this.languages = languages;
+    public String getUrl() {
+        return url;
     }
 
-    public String getKeywords() {
-        return keywords;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
+    public String getSource() {
+        return source;
     }
 
-    public String getSort() {
-        return sort;
+    public void setSource(String source) {
+        this.source = source;
     }
 
-    public void setSort(String sort) {
-        this.sort = sort;
+    public String getImage() {
+        return image;
     }
 
-    public int getOffset() {
-        return offset;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setOffset(int offset) {
-        this.offset = offset;
+    public String getCategory() {
+        return category;
     }
 
-    public int getLimit() {
-        return limit;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Date getPublished_at() {
+        return published_at;
+    }
+
+    public void setPublished_at(Date published_at) {
+        this.published_at = published_at;
     }
 }

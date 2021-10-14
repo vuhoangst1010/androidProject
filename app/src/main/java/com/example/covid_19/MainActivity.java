@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //
 //            }
 //        });
-
         adapter = new Adapter(getApplicationContext(), modelClasses2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
@@ -142,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onResponse(Call<List<NewsClass>> call, Response<List<NewsClass>> response) {
                 newsClasses.addAll(response.body());
                 for (int i = 0; i < newsClasses.size(); i++) {
-                    if (modelClasses.get(i).getCountry().equals(country)) {
+                    if (newsClasses.get(i).getAuthor().equals(country)) {
                         active.setText((modelClasses.get(i).getActive()));
                         deathsToday.setText((modelClasses.get(i).getTodayDeaths()));
                         recoveredToday.setText((modelClasses.get(i).getTodayRecovered()));
