@@ -10,6 +10,6 @@ public interface ApiInterface {
     @GET("countries")
     Call<List<ModelClass>> getCountryData();
 
-    @GET("v1/news?access_key=3710a5ea7af49fc91f0a7a046ad875c3/")
-    Call<List<NewsClass>> getNews();
+    @GET("v1/news?access_key=3710a5ea7af49fc91f0a7a046ad875c3")
+    Call<NewsClass> getNews();
 }
