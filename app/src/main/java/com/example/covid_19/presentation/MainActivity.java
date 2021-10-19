@@ -1,4 +1,4 @@
-package com.example.covid_19;
+package com.example.covid_19.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,19 +14,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.covid_19.adapter.Adapter;
+import com.example.covid_19.common.ApiUtilities;
+import com.example.covid_19.model.entity.News;
+import com.example.covid_19.model.response.NewsResponse;
+import com.example.covid_19.R;
+import com.example.covid_19.model.entity.ModelClass;
+import com.example.covid_19.model.response.ResponseData;
 import com.hbb20.CountryCodePicker;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,11 +43,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Spinner spinner;
     String[] types = {"cases", "deaths", "recovered", "active"};
     private List<ModelClass> modelClasses;
-    private NewsClass newsClass;
+    private NewsResponse newsResponse;
     private List<ModelClass> modelClasses2;
     PieChart pieChart;
     private RecyclerView recyclerView;
-    com.example.covid_19.Adapter adapter;
+    Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         modelClasses = new ArrayList<>();
         modelClasses2 = new ArrayList<>();
-        newsClass = new NewsClass();
+        newsResponse = new NewsResponse();
 
         spinner.setOnItemSelectedListener(this);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,types);
@@ -104,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         });
 
         fetchData();
-        fetchDataNews();
 
     }
 
@@ -140,22 +141,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    private void fetchDataNews() {
-        ApiUtilities.getApiInterfaceNews().getNews().enqueue(new Callback<NewsClass>() {
-            @Override
-            public void onResponse(Call<NewsClass> call, Response<NewsClass> response) {
-                for (ResponseData data: response.body().getData()) {
-                    Log.d("TAG", "onResponse: " + data.getDescription());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<NewsClass> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Call api error", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
 
     private void updateGraph(int active, int total, int recovered, int deaths) {
         pieChart.clearChart();
