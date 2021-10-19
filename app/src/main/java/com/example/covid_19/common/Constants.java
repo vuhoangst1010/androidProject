@@ -1,4 +1,4 @@
-package com.example.covid_19;
+package com.example.covid_19.common;
 
 public class Constants {
     public static final String BASE_URL = "https://disease.sh/v3/covid-19/";

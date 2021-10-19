@@ -1,4 +1,4 @@
-package com.example.covid_19;
+package com.example.covid_19.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.covid_19.R;
+import com.example.covid_19.model.entity.ModelClass;
 
 import java.text.NumberFormat;
 import java.util.List;

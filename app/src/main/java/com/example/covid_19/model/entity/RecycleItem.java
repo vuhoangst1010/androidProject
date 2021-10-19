@@ -1,5 +1,8 @@
-package com.example.covid_19;
+package com.example.covid_19.model.entity;
 
+/**
+ * @author PhuocNDT
+ */
 public class RecycleItem {
     private int imageId;
     private String name;

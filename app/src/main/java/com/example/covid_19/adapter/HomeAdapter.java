@@ -1,4 +1,4 @@
-package com.example.covid_19;
+package com.example.covid_19.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,14 +11,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.covid_19.R;
+import com.example.covid_19.model.entity.RecycleItem;
+import com.example.covid_19.presentation.MainActivity;
+import com.example.covid_19.presentation.NewsActivity;
+
 import java.util.List;
 
-public class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.MyViewHolder> {
+/**
+ * @author PhuocNDT
+ */
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
 
     private List<RecycleItem> recycleItemList;
     private Context context;
 
-    public MyCustomAdapter(List<RecycleItem> recycleItemList, Context context) {
+    public HomeAdapter(List<RecycleItem> recycleItemList, Context context) {
         this.recycleItemList = recycleItemList;
         this.context = context;
     }
@@ -34,6 +42,22 @@ public class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.imvImage.setBackgroundResource(recycleItemList.get(position).getImageId());
         holder.tvTitle.setText(recycleItemList.get(position).getName());
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onCLick(View v, int position, boolean isLongClick) {
+                Intent intent = null;
+                RecycleItem item = recycleItemList.get(position);
+                switch (item.getName()) {
+                    case "Data":
+                        intent = new Intent(context, MainActivity.class);
+                        break;
+                    case "News":
+                        intent = new Intent(context, NewsActivity.class);
+                }
+                context.startActivity(intent);
+//                setAnimation(holder.itemView, position);
+            }
+        });
     }
 
     @Override
@@ -44,6 +68,11 @@ public class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         ImageView imvImage;
         TextView tvTitle;
+        ItemClickListener itemClickListener;
+
+        public void setItemClickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -55,7 +84,7 @@ public class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.MyView
 
         @Override
         public void onClick(View view) {
-            context.startActivity(new Intent(context, MainActivity.class));
+            itemClickListener.onCLick(view, getAdapterPosition(), false);
         }
 
         @Override
@@ -63,4 +92,5 @@ public class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.MyView
             return true;
         }
     }
+
 }
