@@ -1,11 +1,16 @@
-package com.example.covid_19;
+package com.example.covid_19.model.response;
 
+import com.example.covid_19.model.entity.Pagination;
+import com.example.covid_19.model.entity.News;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class NewsClass {
+/**
+ * @author PhuocNDT
+ */
+public class NewsResponse {
 
     @SerializedName("pagination")
     @Expose
@@ -13,9 +18,9 @@ public class NewsClass {
 
     @SerializedName("data")
     @Expose
-    private List<ResponseData> data;
+    private List<News> data;
 
-    public NewsClass() {
+    public NewsResponse() {
     }
 
     public Pagination getPagination() {
@@ -26,11 +31,11 @@ public class NewsClass {
         this.pagination = pagination;
     }
 
-    public List<ResponseData> getData() {
+    public List<News> getData() {
         return data;
     }
 
-    public void setData(List<ResponseData> data) {
+    public void setData(List<News> data) {
         this.data = data;
     }
 }

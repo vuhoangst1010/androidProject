@@ -18,13 +18,12 @@
 
     <ImageView
         android:id="@+id/imvImage"
-        android:layout_width="218dp"
+        android:layout_width="170dp"
         android:layout_height="150dp"
         android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageFoot"

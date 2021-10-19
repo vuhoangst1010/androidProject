@@ -1,4 +1,4 @@
-package com.example.covid_19;
+package com.example.covid_19.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.covid_19.R;
+
+/**
+ * @author PhuocNDT
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     ImageView imvLogo;

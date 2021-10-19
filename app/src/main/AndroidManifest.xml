@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Covid_19"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".HomeActivity"
+            android:name=".presentation.NewsActivity"
             android:exported="true" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".presentation.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
