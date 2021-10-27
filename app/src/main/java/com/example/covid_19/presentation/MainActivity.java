@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.covid_19.ReminderBroadcast;
 import com.example.covid_19.adapter.Adapter;
 import com.example.covid_19.common.ApiUtilities;
 import com.example.covid_19.model.entity.News;
