@@ -14,7 +14,7 @@ public class ReminderBroadcast extends BroadcastReceiver {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notifySon")
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Covid Reminder")
-                .setContentText("Let check out some Covid 19 News !")
+                .setContentText("Let check out some Covid 19 News!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
