@@ -47,6 +47,12 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
         new DownloadImageTask(holder.imvImage, imagePath)
                 .execute();
         holder.imvImage.setAdjustViewBounds(false);
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onCLick(View v, int position, boolean isLongClick) {
+
+            }
+        });
     }
 
     @Override
@@ -59,6 +65,10 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
         ImageView imvImage;
         TextView tvTitle, tvDes;
         ItemClickListener itemClickListener;
+
+        public void setItemClickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
