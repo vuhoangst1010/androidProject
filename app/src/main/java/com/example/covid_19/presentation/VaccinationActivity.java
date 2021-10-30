@@ -10,12 +10,12 @@ import com.example.covid_19.model.entity.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class register extends AppCompatActivity {
+public class VaccinationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_vaccination);
     }
 
     public void register(View view) {

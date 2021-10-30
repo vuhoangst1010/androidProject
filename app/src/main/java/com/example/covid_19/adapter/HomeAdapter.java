@@ -19,6 +19,7 @@ import com.example.covid_19.R;
 import com.example.covid_19.model.entity.RecycleItem;
 import com.example.covid_19.presentation.MainActivity;
 import com.example.covid_19.presentation.NewsActivity;
+import com.example.covid_19.presentation.VaccinationActivity;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.imvImage.setBackgroundResource(recycleItemList.get(position).getImageId());
-        holder.tvTitle.setText(recycleItemList.get(position).getName());
+        holder.tvTitle.setText(recycleItemList.get(position).getDescription());
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onCLick(View v, int position, boolean isLongClick) {
@@ -57,6 +58,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                         break;
                     case "News":
                         intent = new Intent(context, NewsActivity.class);
+                        break;
+                    case "Form":
+                        intent = new Intent(context, VaccinationActivity.class);
+                        break;
                 }
                 context.startActivity(intent);
 //                setAnimation(holder.itemView, position);

@@ -34,12 +34,14 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recActivity);
         createNotificationChannel();
 
-        RecycleItem r1 = new RecycleItem(R.drawable.statistics, "Data", "Covid data");
-        RecycleItem r2 = new RecycleItem(R.drawable.news, "News", "Covid news");
+        RecycleItem r1 = new RecycleItem(R.drawable.statistics, "Data", "Cases");
+        RecycleItem r2 = new RecycleItem(R.drawable.news, "News", "News");
+        RecycleItem r3 = new RecycleItem(R.drawable.form, "Form", "Vaccination");
 
         List<RecycleItem> list = new ArrayList<>();
         list.add(r1);
         list.add(r2);
+        list.add(r3);
 
         HomeAdapter adapter = new HomeAdapter(list, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
