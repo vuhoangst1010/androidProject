@@ -1,10 +1,11 @@
-package com.example.covid_19;
+package com.example.covid_19.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.covid_19.R;
 import com.example.covid_19.model.entity.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

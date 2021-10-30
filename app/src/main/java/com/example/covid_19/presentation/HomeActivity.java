@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
-import com.example.covid_19.ReminderBroadcast;
 import com.example.covid_19.adapter.HomeAdapter;
 import com.example.covid_19.R;
 import com.example.covid_19.model.entity.RecycleItem;
