@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".register">
+    tools:context=".presentation.register"
+    android:orientation="horizontal">
 
     <Button
         android:id="@+id/register"
@@ -23,7 +24,7 @@
 
     <EditText
         android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:hint="Họ và Tên"
@@ -39,7 +40,6 @@
         tools:layout_editor_absoluteX="82dp"
         tools:layout_editor_absoluteY="145dp"
         tools:ignore="MissingConstraints" />
-
     <EditText
         android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
