@@ -9,7 +9,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,14 +16,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.covid_19.ReminderBroadcast;
 import com.example.covid_19.adapter.Adapter;
 import com.example.covid_19.common.ApiUtilities;
-import com.example.covid_19.model.entity.News;
 import com.example.covid_19.model.response.NewsResponse;
 import com.example.covid_19.R;
 import com.example.covid_19.model.entity.ModelClass;
-import com.example.covid_19.model.response.ResponseData;
 import com.hbb20.CountryCodePicker;
 
 import org.eazegraph.lib.charts.PieChart;
@@ -96,10 +92,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 modelClasses2.addAll(response.body());
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onFailure(Call<List<ModelClass>> call, Throwable t) {
-
             }
         });
         adapter = new Adapter(getApplicationContext(), modelClasses2);
