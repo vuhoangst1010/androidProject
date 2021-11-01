@@ -19,6 +19,12 @@
         <entry key="..\:/Semester_7/PRM/covid19_prm391-master-2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Semester_7/PRM/covid19_prm391-master-2/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Semester_7/PRM/covid19_prm391-master-2/app/src/main/res/layout/layout_item.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/androidProject/app/src/main/res/layout/activity_home.xml" value="0.2056159420289855" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/androidProject/app/src/main/res/layout/activity_news.xml" value="0.2056159420289855" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/androidProject/app/src/main/res/layout/activity_news_detail.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/androidProject/app/src/main/res/layout/news_item.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/androidProject/app/src/main/res/layout/recycle_item.xml" value="0.2056159420289855" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/androidProject/app/src/main/res/layout/recycle_news.xml" value="0.2056159420289855" />
       </map>
     </option>
   </component>

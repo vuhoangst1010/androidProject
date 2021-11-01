@@ -1,24 +1,31 @@
 package com.example.covid_19.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.covid_19.R;
 import com.example.covid_19.model.entity.News;
+import com.example.covid_19.presentation.NewsDetail;
 
 import java.io.InputStream;
 import java.util.List;
+
+import retrofit2.Retrofit;
 
 /**
  * @author PhuocNDT
@@ -26,6 +33,7 @@ import java.util.List;
 public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     private List<News> newsList;
     private Context context;
+    private Retrofit retrofit;
 
     public NewsAdapter(List<News> newsList, Context context) {
         this.newsList = newsList;
@@ -50,9 +58,18 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onCLick(View v, int position, boolean isLongClick) {
-
+                String url = newsList.get(position).getUrl();
+                onClickGoToDetail(url);
             }
         });
+    }
+
+    private void onClickGoToDetail(String url){
+        Intent intent = new Intent(context, NewsDetail.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("news_url",url);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
     @Override
@@ -62,6 +79,7 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+        ConstraintLayout recycleNews;
         ImageView imvImage;
         TextView tvTitle, tvDes;
         ItemClickListener itemClickListener;
@@ -72,6 +90,8 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
             imvImage = itemView.findViewById(R.id.imvNewImage);
             tvTitle = itemView.findViewById(R.id.tvNewsTitle);
             tvDes = itemView.findViewById(R.id.tvNewsDes);
