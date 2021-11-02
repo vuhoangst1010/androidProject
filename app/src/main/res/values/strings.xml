@@ -11,4 +11,6 @@
     <string name="cases">Cases</string>
     <string name="increment_number">+0</string>
     <string name="number">2323236544</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

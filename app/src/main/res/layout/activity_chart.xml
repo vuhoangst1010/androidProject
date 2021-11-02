@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.MainActivity">
+    tools:context=".presentation.ChartActivity">
 
-    <RelativeLayout
-        android:id="@+id/topbg"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/relativebgg">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,18 +34,27 @@
 
                 </TextView>
 
-                <com.hbb20.CountryCodePicker
-                    android:id="@+id/ccp"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
                     android:background="@drawable/country_code_drawable"
-                    android:padding="5dp"
-                    app:ccp_defaultNameCode="VN"
-                    app:ccp_showFullName="false"
-                    app:ccp_showPhoneCode="false"
-                    app:ccp_textSize="12sp" />
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="TextView"
+                    android:textColor="#000000" />
 
 
             </LinearLayout>
@@ -59,8 +67,8 @@
 
                 <org.eazegraph.lib.charts.PieChart
                     android:id="@+id/piechart"
-                    android:layout_width="220dp"
-                    android:layout_height="180dp"
+                    android:layout_width="230dp"
+                    android:layout_height="250dp"
                     android:padding="8dp"
                     app:egLegendTextSize="8sp"
                     app:egUsePieRotation="true"
@@ -69,8 +77,8 @@
                 </org.eazegraph.lib.charts.PieChart>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="165dp"
+                    android:layout_height="205dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:orientation="vertical">
@@ -78,76 +86,14 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
                         android:orientation="horizontal">
 
                         <View
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/viewbg"
-                            android:backgroundTint="@color/green">
-
-
-                        </View>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:text="@string/active"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <View
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/viewbg"
-                            android:backgroundTint="@color/blue">
-
-
-                        </View>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:text="@string/recovered"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <View
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
                             android:layout_gravity="center"
                             android:background="@drawable/viewbg"
                             android:backgroundTint="@color/yellow">
@@ -161,9 +107,10 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:text="@string/total"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
+                            android:textColor="@color/teal_700"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:text="Total">
 
                         </TextView>
 
@@ -173,13 +120,82 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="25dp"
                         android:orientation="horizontal">
 
                         <View
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/viewbg"
+                            android:backgroundTint="@color/blue">
+
+
+                        </View>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/recovered"
+                            android:textColor="@color/teal_700"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:text="Recovered">
+
+                        </TextView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="25dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/viewbg"
+                            android:backgroundTint="@color/green">
+
+
+                        </View>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/active"
+                            android:textColor="@color/teal_700"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:text="Active">
+
+                        </TextView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="25dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
                             android:layout_gravity="center"
                             android:background="@drawable/viewbg"
                             android:backgroundTint="@color/red">
@@ -193,9 +209,10 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:text="@string/deaths"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
+                            android:textColor="@color/teal_700"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:text="Death">
 
                         </TextView>
 
@@ -208,41 +225,65 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/middlebg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/topbg"
-        android:layout_marginTop="5dp"
-        android:gravity="center">
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#34B4C5"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Present"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:padding="5dp"
-            android:useDefaultMargins="true">
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#34B4C5"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Today"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="160dp"
-                android:layout_height="60dp"
-                android:backgroundTint="@color/card_bg"
-                app:strokeColor="#0C0F45"
-                app:strokeWidth="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="#EAE8E2"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
                         android:orientation="horizontal">
 
                         <View
@@ -268,6 +309,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -275,10 +317,12 @@
                             android:id="@+id/totalcase"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginLeft="15dp"
                             android:layout_weight="1"
                             android:text="@string/number"
                             android:textColor="@color/black"
-                            android:textSize="12dp"
+                            android:textSize="13sp"
                             android:textStyle="bold">
 
                         </TextView>
@@ -289,9 +333,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:text="@string/increment_number"
                             android:textColor="@color/yellow"
-                            android:textSize="10dp"
+                            android:textSize="13sp"
                             android:textStyle="bold">
 
                         </TextView>
@@ -301,102 +346,19 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="160dp"
-                android:layout_height="60dp"
-                android:backgroundTint="@color/card_bg"
-                app:strokeColor="#0C0F45"
-                app:strokeWidth="2dp">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="#EAE8E2"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-
-                        <View
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/viewbg"
-                            android:backgroundTint="@color/green" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:text="@string/active"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:orientation="horizontal"
-                        android:padding="5dp">
-
-                        <TextView
-                            android:id="@+id/activecase"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/number"
-                            android:textColor="@color/black"
-                            android:textSize="12dp"
-                            android:textStyle="bold">
-
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/activetoday"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight="1"
-                            android:text="@string/increment_number"
-                            android:textColor="@color/green"
-                            android:textSize="10dp"
-                            android:textStyle="bold">
-
-                        </TextView>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="160dp"
-                android:layout_height="60dp"
-                android:backgroundTint="@color/card_bg"
-                app:strokeColor="#0C0F45"
-                app:strokeWidth="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
                         android:orientation="horizontal">
 
                         <View
@@ -422,6 +384,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -429,10 +392,12 @@
                             android:id="@+id/recoveredtotal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginLeft="15dp"
                             android:layout_weight="1"
                             android:text="@string/number"
                             android:textColor="@color/black"
-                            android:textSize="12dp"
+                            android:textSize="13sp"
                             android:textStyle="bold">
 
                         </TextView>
@@ -443,9 +408,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:text="@string/increment_number"
                             android:textColor="@color/blue"
-                            android:textSize="10dp"
+                            android:textSize="13sp"
                             android:textStyle="bold">
 
                         </TextView>
@@ -455,25 +421,94 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="160dp"
-                android:layout_height="60dp"
-                android:backgroundTint="@color/card_bg"
-                app:strokeColor="#0C0F45"
-                app:strokeWidth="2dp">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="#EAE8E2"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/viewbg"
+                            android:backgroundTint="@color/green" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/active"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/activecase"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="1"
+                            android:text="@string/number"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:textStyle="bold">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/activetoday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/increment_number"
+                            android:textColor="@color/green"
+                            android:textSize="13sp"
+                            android:textStyle="bold">
+
+                        </TextView>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="#EAE8E2"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
                         android:orientation="horizontal">
 
                         <View
@@ -499,6 +534,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -506,10 +542,12 @@
                             android:id="@+id/deathcase"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginLeft="15dp"
                             android:layout_weight="1"
                             android:text="@string/number"
                             android:textColor="@color/black"
-                            android:textSize="12dp"
+                            android:textSize="13sp"
                             android:textStyle="bold">
 
                         </TextView>
@@ -520,9 +558,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:text="@string/increment_number"
                             android:textColor="@color/red"
-                            android:textSize="10dp"
+                            android:textSize="13sp"
                             android:textStyle="bold">
 
                         </TextView>
@@ -532,74 +571,9 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
-
-
-        </GridLayout>
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/middlebg"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/relativebg"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="@string/country"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/filter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:paddingStart="40dp"
-                android:paddingLeft="20dp"
-                android:text="@string/cases"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/dataSpinner"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/ic_baseline_arrow_drop_down_24">
-
-            </Spinner>
+            </LinearLayout>
 
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
-            android:padding="10dp" />
-
     </LinearLayout>
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

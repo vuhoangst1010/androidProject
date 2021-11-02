@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.covid_19.R;
 import com.example.covid_19.model.entity.RecycleItem;
+import com.example.covid_19.presentation.DataActivity;
 import com.example.covid_19.presentation.MainActivity;
 import com.example.covid_19.presentation.NewsActivity;
 import com.example.covid_19.presentation.VaccinationActivity;
@@ -54,7 +55,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                 RecycleItem item = recycleItemList.get(position);
                 switch (item.getName()) {
                     case "Data":
-                        intent = new Intent(context, MainActivity.class);
+                        intent = new Intent(context, DataActivity.class);
                         break;
                     case "News":
                         intent = new Intent(context, NewsActivity.class);

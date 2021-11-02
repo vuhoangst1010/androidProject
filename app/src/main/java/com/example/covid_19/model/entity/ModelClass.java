@@ -1,6 +1,8 @@
 package com.example.covid_19.model.entity;
 
-public class ModelClass {
+import java.io.Serializable;
+
+public class ModelClass implements Serializable {
 
     private String cases, todayCases, deaths, todayDeaths, recovered, todayRecovered, active, country;
 

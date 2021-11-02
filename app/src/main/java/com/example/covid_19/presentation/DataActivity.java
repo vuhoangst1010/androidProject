@@ -9,18 +9,21 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.covid_19.R;
 import com.example.covid_19.adapter.Adapter;
 import com.example.covid_19.common.ApiUtilities;
-import com.example.covid_19.model.response.NewsResponse;
-import com.example.covid_19.R;
 import com.example.covid_19.model.entity.ModelClass;
+import com.example.covid_19.model.response.NewsResponse;
 import com.hbb20.CountryCodePicker;
 
 import org.eazegraph.lib.charts.PieChart;
@@ -33,8 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
+public class DataActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     CountryCodePicker countryCodePicker;
     TextView totalToday, total, active, activeToday, recovered, recoveredToday, deaths, deathsToday;
 
@@ -45,25 +47,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private List<ModelClass> modelClasses;
     private NewsResponse newsResponse;
     private List<ModelClass> modelClasses2;
+    List<ModelClass> filterList;
     PieChart pieChart;
     private RecyclerView recyclerView;
     Adapter adapter;
+    EditText edtCountry;
+    String keyword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_data);
         getSupportActionBar().hide();
         countryCodePicker = findViewById(R.id.ccp);
-        activeToday = findViewById(R.id.activetoday);
-        active = findViewById(R.id.activecase);
-        total = findViewById(R.id.totalcase);
-        totalToday = findViewById(R.id.totaltoday);
-        deaths = findViewById(R.id.deathcase);
-        deathsToday = findViewById(R.id.deathtoday);
-        recovered = findViewById(R.id.recoveredtotal);
-        recoveredToday = findViewById(R.id.recoveredtoday);
-        pieChart = findViewById(R.id.piechart);
+//        activeToday = findViewById(R.id.activetoday);
+//        active = findViewById(R.id.activecase);
+//        total = findViewById(R.id.totalcase);
+//        totalToday = findViewById(R.id.totaltoday);
+//        deaths = findViewById(R.id.deathcase);
+//        deathsToday = findViewById(R.id.deathtoday);
+//        recovered = findViewById(R.id.recoveredtotal);
+//        recoveredToday = findViewById(R.id.recoveredtoday);
+//        pieChart = findViewById(R.id.piechart);
+        edtCountry = findViewById(R.id.edtCountry);
         spinner = findViewById(R.id.dataSpinner);
         filter = findViewById(R.id.filter);
         recyclerView = findViewById(R.id.recyclerview);
@@ -73,15 +79,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         newsResponse = new NewsResponse();
 
         Toast.makeText(this, "Reminder Set!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+        Intent intent = new Intent(DataActivity.this, ReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(DataActivity.this, 0, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         long timeAtButtonClick = System.currentTimeMillis();
         long tenSecondsInMilis = 1000 * 20;
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + tenSecondsInMilis, pendingIntent);
 
         spinner.setOnItemSelectedListener(this);
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,types);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, types);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(arrayAdapter);
@@ -92,26 +98,46 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 modelClasses2.addAll(response.body());
                 adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onFailure(Call<List<ModelClass>> call, Throwable t) {
             }
         });
-        adapter = new Adapter(getApplicationContext(), modelClasses2);
+        filterList = modelClasses2;
+        edtCountry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                keyword = edtCountry.getText().toString();
+                adapter.countryFilter(keyword);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                keyword = edtCountry.getText().toString();
+                adapter.countryFilter(keyword);
+            }
+        });
+        adapter = new Adapter(getApplicationContext(), filterList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
-        countryCodePicker.setDefaultCountryUsingNameCode("VN");
-        country = countryCodePicker.getSelectedCountryName();
-        countryCodePicker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
-            @Override
-            public void onCountrySelected() {
-                country = countryCodePicker.getSelectedCountryName();
-                fetchData();
-            }
-        });
-
-        fetchData();
+//        countryCodePicker.setDefaultCountryUsingNameCode("VN");
+//        country = countryCodePicker.getSelectedCountryName();
+//        countryCodePicker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+//            @Override
+//            public void onCountrySelected() {
+//                country = countryCodePicker.getSelectedCountryName();
+//                fetchData();
+//            }
+//        });
+//
+//        fetchData();
 
     }
 
@@ -141,12 +167,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             @Override
             public void onFailure(Call<List<ModelClass>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Call api error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DataActivity.this, "Call api error", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
-
 
 
     private void updateGraph(int active, int total, int recovered, int deaths) {
@@ -168,5 +193,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void onVietnam(View view) {
+        edtCountry.setText("Vietnam");
+    }
+
+    public void onUS(View view) {
+        edtCountry.setText("US");
+    }
+
+    public void onUK(View view) {
+        edtCountry.setText("UK");
     }
 }

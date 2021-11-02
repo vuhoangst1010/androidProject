@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/imvImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="173dp"
+        android:layout_height="173dp"
         android:layout_marginTop="9dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
