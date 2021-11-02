@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.example.covid_19.R;
@@ -36,6 +38,7 @@ public class NewsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<News> newsList;
     NewsAdapter adapter;
+    WebView webview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class NewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news);
         initViews();
     }
+
 
     private void initViews() {
         recyclerView = findViewById(R.id.recNews);
