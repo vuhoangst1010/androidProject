@@ -9,7 +9,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.covid_19.R;
-import com.example.covid_19.model.entity.ModelClass;
+import com.example.covid_19.model.entity.Data;
 import com.example.covid_19.model.response.NewsResponse;
 
 import org.eazegraph.lib.charts.PieChart;
@@ -17,25 +17,21 @@ import org.eazegraph.lib.models.PieModel;
 
 import java.util.List;
 
+/**
+ * @author phuocNDT
+ */
 public class ChartActivity extends AppCompatActivity {
 
-    TextView tvTotalToday, tvTotal, tvActive, tvActiveToday, tvRecovered, tvRecoveredToday, tvDeath, tvDeathsToday, tvCountry;
-
-    ModelClass country;
-    TextView filter;
-    Spinner spinner;
-    String[] types = {"cases", "deaths", "recovered", "active"};
-    private List<ModelClass> modelClasses;
-    private NewsResponse newsResponse;
-    private List<ModelClass> modelClasses2;
+    TextView tvTotalToday, tvTotal, tvActive, tvActiveToday,
+            tvRecovered, tvRecoveredToday, tvDeath, tvDeathsToday, tvCountry;
+    Data country;
     PieChart pieChart;
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         tvActiveToday = findViewById(R.id.activetoday);
         tvActive = findViewById(R.id.activecase);
         tvTotal = findViewById(R.id.totalcase);
@@ -45,10 +41,10 @@ public class ChartActivity extends AppCompatActivity {
         tvRecovered = findViewById(R.id.recoveredtotal);
         tvRecoveredToday = findViewById(R.id.recoveredtoday);
         pieChart = findViewById(R.id.piechart);
-        filter = findViewById(R.id.filter);
         tvCountry = findViewById(R.id.tvCountry);
-        country = (ModelClass) getIntent().getExtras().getSerializable("country");
+        country = (Data) getIntent().getExtras().getSerializable("country");
         fetchData();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     private void fetchData() {

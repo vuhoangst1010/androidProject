@@ -13,11 +13,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#7DC4CD"
             android:gravity="center"
-            android:text="COVID CASE"
+            android:padding="5dp"
+            android:text="COVID STATISTICS"
             android:textSize="24sp"
             android:textStyle="bold" />
 

@@ -11,23 +11,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.covid_19.R;
-import com.example.covid_19.model.entity.ModelClass;
+import com.example.covid_19.model.entity.Data;
 import com.example.covid_19.presentation.ChartActivity;
 
-import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     int m = 1;
     Context context;
-    List<ModelClass> countryList;
-    List<ModelClass> filterList;
+    List<Data> countryList;
+    List<Data> filterList;
 
-    public Adapter(Context context, List<ModelClass> countryList) {
+    public DataAdapter(Context context, List<Data> countryList) {
         this.context = context;
         this.countryList = countryList;
         this.filterList = countryList;
@@ -35,30 +33,30 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @NonNull
     @Override
-    public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_item, null, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
-        ModelClass modelClass = filterList.get(position);
+    public void onBindViewHolder(@NonNull DataAdapter.ViewHolder holder, int position) {
+        Data data = filterList.get(position);
         if (m == 1) {
-            holder.cases.setText(NumberFormat.getInstance().format(Integer.parseInt(modelClass.getCases())));
+            holder.cases.setText(NumberFormat.getInstance().format(Integer.parseInt(data.getCases())));
         } else if (m == 2) {
-            holder.cases.setText(NumberFormat.getInstance().format(Integer.parseInt(modelClass.getRecovered())));
+            holder.cases.setText(NumberFormat.getInstance().format(Integer.parseInt(data.getRecovered())));
         } else if (m == 3) {
-            holder.cases.setText(NumberFormat.getInstance().format(Integer.parseInt(modelClass.getDeaths())));
+            holder.cases.setText(NumberFormat.getInstance().format(Integer.parseInt(data.getDeaths())));
         } else {
-            holder.cases.setText(NumberFormat.getInstance().format(Integer.parseInt(modelClass.getActive())));
+            holder.cases.setText(NumberFormat.getInstance().format(Integer.parseInt(data.getActive())));
         }
-        holder.country.setText(modelClass.getCountry());
+        holder.country.setText(data.getCountry());
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onCLick(View v, int position, boolean isLongClick) {
 
                 Intent intent = new Intent(context, ChartActivity.class);
-                ModelClass country = filterList.get(position);
+                Data country = filterList.get(position);
                 intent.putExtra("country", country);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

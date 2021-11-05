@@ -24,5 +24,6 @@ public class NewsDetail extends AppCompatActivity {
         webView=findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(url);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }

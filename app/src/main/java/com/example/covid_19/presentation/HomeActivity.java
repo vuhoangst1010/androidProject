@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         HomeAdapter adapter = new HomeAdapter(list, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        recyclerView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.splash_in));
+        recyclerView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.splash_in_zoom_in));
 
         recyclerView.setOnClickListener(v -> {
             Toast.makeText(this, "Reminder Set!", Toast.LENGTH_SHORT).show();
@@ -57,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
             long tenSecondsInMilis = 1000 * 20;
             alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + tenSecondsInMilis, pendingIntent);
         });
+//        overridePendingTransition(R.anim.splash_in_zoom_out, R.anim.splash_in_zoom_in);
     }
 
     private void createNotificationChannel() {
