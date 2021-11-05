@@ -22,9 +22,9 @@
 
     <ImageView
         android:id="@+id/imvImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="9dp"
+        android:layout_width="157dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         android:id="@+id/imageFoot"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="6dp"
         android:background="#D5D5D5"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         tools:layout_editor_absoluteX="0dp" />

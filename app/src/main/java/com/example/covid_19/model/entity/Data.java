@@ -1,10 +1,12 @@
 package com.example.covid_19.model.entity;
 
-public class ModelClass {
+import java.io.Serializable;
+
+public class Data implements Serializable {
 
     private String cases, todayCases, deaths, todayDeaths, recovered, todayRecovered, active, country;
 
-    public ModelClass(String cases, String todayCases, String deaths, String todayDeaths, String recovered, String todayRecovered, String active, String country) {
+    public Data(String cases, String todayCases, String deaths, String todayDeaths, String recovered, String todayRecovered, String active, String country) {
         this.cases = cases;
         this.todayCases = todayCases;
         this.deaths = deaths;

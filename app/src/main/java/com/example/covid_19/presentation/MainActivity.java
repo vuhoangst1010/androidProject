@@ -16,11 +16,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.covid_19.adapter.Adapter;
+import com.example.covid_19.adapter.DataAdapter;
 import com.example.covid_19.common.ApiUtilities;
 import com.example.covid_19.model.response.NewsResponse;
 import com.example.covid_19.R;
-import com.example.covid_19.model.entity.ModelClass;
+import com.example.covid_19.model.entity.Data;
 import com.hbb20.CountryCodePicker;
 
 import org.eazegraph.lib.charts.PieChart;
@@ -42,12 +42,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView filter;
     Spinner spinner;
     String[] types = {"cases", "deaths", "recovered", "active"};
-    private List<ModelClass> modelClasses;
+    private List<Data> data;
     private NewsResponse newsResponse;
-    private List<ModelClass> modelClasses2;
+    private List<Data> modelClasses2;
     PieChart pieChart;
     private RecyclerView recyclerView;
-    Adapter adapter;
+    DataAdapter dataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +64,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recovered = findViewById(R.id.recoveredtotal);
         recoveredToday = findViewById(R.id.recoveredtoday);
         pieChart = findViewById(R.id.piechart);
-        spinner = findViewById(R.id.spinner);
+        spinner = findViewById(R.id.dataSpinner);
         filter = findViewById(R.id.filter);
         recyclerView = findViewById(R.id.recyclerview);
 
-        modelClasses = new ArrayList<>();
+        data = new ArrayList<>();
         modelClasses2 = new ArrayList<>();
         newsResponse = new NewsResponse();
 
@@ -86,20 +86,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         spinner.setAdapter(arrayAdapter);
 
-        ApiUtilities.getApiInterface().getCountryData().enqueue(new Callback<List<ModelClass>>() {
+        ApiUtilities.getApiInterface().getCountryData().enqueue(new Callback<List<Data>>() {
             @Override
-            public void onResponse(Call<List<ModelClass>> call, Response<List<ModelClass>> response) {
+            public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
                 modelClasses2.addAll(response.body());
-                adapter.notifyDataSetChanged();
+                dataAdapter.notifyDataSetChanged();
             }
             @Override
-            public void onFailure(Call<List<ModelClass>> call, Throwable t) {
+            public void onFailure(Call<List<Data>> call, Throwable t) {
             }
         });
-        adapter = new Adapter(getApplicationContext(), modelClasses2);
+        dataAdapter = new DataAdapter(getApplicationContext(), modelClasses2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(dataAdapter);
 
         countryCodePicker.setDefaultCountryUsingNameCode("VN");
         country = countryCodePicker.getSelectedCountryName();
@@ -116,31 +116,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void fetchData() {
-        ApiUtilities.getApiInterface().getCountryData().enqueue(new Callback<List<ModelClass>>() {
+        ApiUtilities.getApiInterface().getCountryData().enqueue(new Callback<List<Data>>() {
             @Override
-            public void onResponse(Call<List<ModelClass>> call, Response<List<ModelClass>> response) {
-                modelClasses.addAll(response.body());
-                for (int i = 0; i < modelClasses.size(); i++) {
-                    if (modelClasses.get(i).getCountry().equals(country)) {
-                        active.setText((modelClasses.get(i).getActive()));
-                        deathsToday.setText((modelClasses.get(i).getTodayDeaths()));
-                        recoveredToday.setText((modelClasses.get(i).getTodayRecovered()));
-                        totalToday.setText((modelClasses.get(i).getTodayCase()));
-                        total.setText((modelClasses.get(i).getCases()));
-                        deaths.setText((modelClasses.get(i).getDeaths()));
-                        recovered.setText((modelClasses.get(i).getRecovered()));
+            public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
+                data.addAll(response.body());
+                for (int i = 0; i < data.size(); i++) {
+                    if (data.get(i).getCountry().equals(country)) {
+                        active.setText((data.get(i).getActive()));
+                        deathsToday.setText((data.get(i).getTodayDeaths()));
+                        recoveredToday.setText((data.get(i).getTodayRecovered()));
+                        totalToday.setText((data.get(i).getTodayCase()));
+                        total.setText((data.get(i).getCases()));
+                        deaths.setText((data.get(i).getDeaths()));
+                        recovered.setText((data.get(i).getRecovered()));
                         int active, total, recovered, deaths;
-                        active = Integer.parseInt(modelClasses.get(i).getActive());
-                        total = Integer.parseInt(modelClasses.get(i).getCases());
-                        recovered = Integer.parseInt(modelClasses.get(i).getRecovered());
-                        deaths = Integer.parseInt(modelClasses.get(i).getDeaths());
+                        active = Integer.parseInt(data.get(i).getActive());
+                        total = Integer.parseInt(data.get(i).getCases());
+                        recovered = Integer.parseInt(data.get(i).getRecovered());
+                        deaths = Integer.parseInt(data.get(i).getDeaths());
                         updateGraph(active, total, recovered, deaths);
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ModelClass>> call, Throwable t) {
+            public void onFailure(Call<List<Data>> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Call api error", Toast.LENGTH_SHORT).show();
             }
         });
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = types[position];
         filter.setText(item);
-        adapter.filter(item);
+        dataAdapter.caseFilter(item);
     }
 
     @Override

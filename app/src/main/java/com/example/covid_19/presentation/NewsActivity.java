@@ -5,25 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.example.covid_19.R;
 import com.example.covid_19.adapter.NewsAdapter;
 import com.example.covid_19.common.ApiUtilities;
-import com.example.covid_19.model.entity.ModelClass;
 import com.example.covid_19.model.entity.News;
 import com.example.covid_19.model.response.NewsResponse;
-import com.example.covid_19.model.response.ResponseData;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -45,6 +35,7 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         initViews();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
 

@@ -23,7 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.logo);
         imvLogo = findViewById(R.id.imvLogo);
 
-        imvLogo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.splash_in));
+        imvLogo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.splash_in_zoom_in));
 
         new Handler().postDelayed(new Runnable() {
             @Override

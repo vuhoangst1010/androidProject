@@ -2,11 +2,13 @@ package com.example.covid_19.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.covid_19.R;
 import com.example.covid_19.model.entity.User;
@@ -19,6 +21,7 @@ public class VaccinationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccination);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     public void register(View view) {
@@ -33,6 +36,11 @@ public class VaccinationActivity extends AppCompatActivity {
         String gender =((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
         User infor = new User(username,phoneNumber,birthDate,gender,id,address);
         myRef.child(infor.getId()).setValue(infor);
-        ((TextView)findViewById(R.id.status)).setText("đăng kí thành công");
+//        ((TextView)findViewById(R.id.status)).setText("đăng kí thành công");
+
+        Toast.makeText(VaccinationActivity.this, "Register successfully", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+
     }
 }
