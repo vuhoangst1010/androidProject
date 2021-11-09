@@ -1,4 +1,4 @@
-package com.example.covid_19.presentation;
+package com.example.covid_defender.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import com.example.covid_19.R;
+import com.example.covid_defender.R;
 
 public class NewsDetail extends AppCompatActivity {
     WebView webView;

@@ -1,4 +1,4 @@
-package com.example.covid_19.adapter;
+package com.example.covid_defender.adapter;
 
 import android.view.View;
 

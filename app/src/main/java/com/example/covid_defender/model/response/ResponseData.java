@@ -1,14 +1,12 @@
-package com.example.covid_19.model.entity;
+package com.example.covid_defender.model.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-/**
- * @author PhuocNDT
- */
-public class News {
+public class ResponseData {
+
     @SerializedName("author")
     @Expose
     private String author;
@@ -47,22 +45,9 @@ public class News {
 
     @SerializedName("published_at")
     @Expose
-    private Date publishedAt;
+    private Date published_at;
 
-    public News() {
-    }
-
-    public News(String author, String title, String description, String url, String source, String image, String category, String language, String country, Date publishedAt) {
-        this.author = author;
-        this.title = title;
-        this.description = description;
-        this.url = url;
-        this.source = source;
-        this.image = image;
-        this.category = category;
-        this.language = language;
-        this.country = country;
-        this.publishedAt = publishedAt;
+    public ResponseData() {
     }
 
     public String getAuthor() {
@@ -137,11 +122,11 @@ public class News {
         this.country = country;
     }
 
-    public Date getPublishedAt() {
-        return publishedAt;
+    public Date getPublished_at() {
+        return published_at;
     }
 
-    public void setPublishedAt(Date publishedAt) {
-        this.publishedAt = publishedAt;
+    public void setPublished_at(Date published_at) {
+        this.published_at = published_at;
     }
 }

@@ -1,7 +1,7 @@
-package com.example.covid_19.model.response;
+package com.example.covid_defender.model.response;
 
-import com.example.covid_19.model.entity.Pagination;
-import com.example.covid_19.model.entity.News;
+import com.example.covid_defender.model.entity.Pagination;
+import com.example.covid_defender.model.entity.News;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

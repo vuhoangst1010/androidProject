@@ -1,4 +1,4 @@
-package com.example.covid_19.presentation;
+package com.example.covid_defender.presentation;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.example.covid_19.R;
+import com.example.covid_defender.R;
 
 public class ReminderBroadcast extends BroadcastReceiver {
 

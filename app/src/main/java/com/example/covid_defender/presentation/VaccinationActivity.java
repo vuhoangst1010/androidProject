@@ -1,4 +1,4 @@
-package com.example.covid_19.presentation;
+package com.example.covid_defender.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,8 +10,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.covid_19.R;
-import com.example.covid_19.model.entity.User;
+import com.example.covid_defender.R;
+import com.example.covid_defender.model.entity.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

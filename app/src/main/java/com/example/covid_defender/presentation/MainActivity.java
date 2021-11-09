@@ -1,4 +1,4 @@
-package com.example.covid_19.presentation;
+package com.example.covid_defender.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,11 +16,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.covid_19.adapter.DataAdapter;
-import com.example.covid_19.common.ApiUtilities;
-import com.example.covid_19.model.response.NewsResponse;
-import com.example.covid_19.R;
-import com.example.covid_19.model.entity.Data;
+import com.example.covid_defender.adapter.DataAdapter;
+import com.example.covid_defender.common.ApiUtilities;
+import com.example.covid_defender.model.response.NewsResponse;
+import com.example.covid_defender.R;
+import com.example.covid_defender.model.entity.Data;
 import com.hbb20.CountryCodePicker;
 
 import org.eazegraph.lib.charts.PieChart;

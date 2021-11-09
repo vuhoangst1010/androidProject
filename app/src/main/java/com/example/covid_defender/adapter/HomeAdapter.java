@@ -1,26 +1,21 @@
-package com.example.covid_19.adapter;
+package com.example.covid_defender.adapter;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.covid_19.R;
-import com.example.covid_19.model.entity.RecycleItem;
-import com.example.covid_19.presentation.DataActivity;
-import com.example.covid_19.presentation.MainActivity;
-import com.example.covid_19.presentation.NewsActivity;
-import com.example.covid_19.presentation.VaccinationActivity;
+import com.example.covid_defender.R;
+import com.example.covid_defender.model.entity.RecycleItem;
+import com.example.covid_defender.presentation.DataActivity;
+import com.example.covid_defender.presentation.NewsActivity;
+import com.example.covid_defender.presentation.VaccinationActivity;
 
 import java.util.List;
 

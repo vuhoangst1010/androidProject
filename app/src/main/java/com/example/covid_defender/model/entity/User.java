@@ -1,4 +1,4 @@
-package com.example.covid_19.model.entity;
+package com.example.covid_defender.model.entity;
 
 public class User {
     String username,phone,birthDate,Gender,id,address;
