@@ -1,4 +1,4 @@
-package com.example.covid_19.adapter;
+package com.example.covid_defender.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.covid_19.R;
-import com.example.covid_19.model.entity.Data;
-import com.example.covid_19.presentation.ChartActivity;
+import com.example.covid_defender.R;
+import com.example.covid_defender.model.entity.Data;
+import com.example.covid_defender.presentation.ChartActivity;
 
 import java.text.NumberFormat;
 import java.util.List;

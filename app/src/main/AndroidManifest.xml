@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.covid_19">
+    package="com.example.covid_defender">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_ALARM"/>
@@ -14,25 +14,25 @@
         android:theme="@style/Theme.Covid_19"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".presentation.ChartActivity"
+            android:name="com.example.covid_defender.presentation.ChartActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.NewsDetail"
+            android:name="com.example.covid_defender.presentation.NewsDetail"
             android:exported="true" />
         <activity
-            android:name=".presentation.DataActivity"
+            android:name="com.example.covid_defender.presentation.DataActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.MainActivity"
+            android:name="com.example.covid_defender.presentation.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.NewsActivity"
+            android:name="com.example.covid_defender.presentation.NewsActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.HomeActivity"
+            android:name="com.example.covid_defender.presentation.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.WelcomeActivity"
+            android:name="com.example.covid_defender.presentation.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,14 +40,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.VaccinationActivity">
+        <activity android:name="com.example.covid_defender.presentation.VaccinationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".presentation.ReminderBroadcast"/>
+        <receiver android:name="com.example.covid_defender.presentation.ReminderBroadcast"/>
     </application>
 
 </manifest>

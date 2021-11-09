@@ -1,21 +1,16 @@
-package com.example.covid_19.presentation;
+package com.example.covid_defender.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.covid_19.R;
-import com.example.covid_19.model.entity.Data;
-import com.example.covid_19.model.response.NewsResponse;
+import com.example.covid_defender.R;
+import com.example.covid_defender.model.entity.Data;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
-
-import java.util.List;
 
 /**
  * @author phuocNDT

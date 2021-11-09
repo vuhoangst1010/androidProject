@@ -1,4 +1,4 @@
-package com.example.covid_19.presentation;
+package com.example.covid_defender.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,9 +14,9 @@ import android.os.Bundle;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
-import com.example.covid_19.adapter.HomeAdapter;
-import com.example.covid_19.R;
-import com.example.covid_19.model.entity.RecycleItem;
+import com.example.covid_defender.adapter.HomeAdapter;
+import com.example.covid_defender.R;
+import com.example.covid_defender.model.entity.RecycleItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recActivity);
         createNotificationChannel();
 
-        RecycleItem r1 = new RecycleItem(R.drawable.statistics, "Data", "Cases");
+        RecycleItem r1 = new RecycleItem(R.drawable.statistics, "Data", "Statistics");
         RecycleItem r2 = new RecycleItem(R.drawable.news, "News", "News");
         RecycleItem r3 = new RecycleItem(R.drawable.form, "Form", "Vaccination");
 

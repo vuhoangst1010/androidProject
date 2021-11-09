@@ -1,7 +1,7 @@
-package com.example.covid_19.common;
+package com.example.covid_defender.common;
 
-import com.example.covid_19.model.entity.Data;
-import com.example.covid_19.model.response.NewsResponse;
+import com.example.covid_defender.model.entity.Data;
+import com.example.covid_defender.model.response.NewsResponse;
 
 import java.util.List;
 

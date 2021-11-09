@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="5dp"
-    android:paddingBottom="5dp">
+    android:paddingBottom="5dp"
+    tools:context=".presentation.DataActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:background="#7DC4CD"
             android:gravity="center"
             android:padding="5dp"
-            android:text="COVID STATISTICS"
+            android:text="COVID STATISTIC"
             android:textSize="24sp"
             android:textStyle="bold" />
 

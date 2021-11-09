@@ -1,4 +1,4 @@
-package com.example.covid_19.common;
+package com.example.covid_defender.common;
 
 import java.util.concurrent.TimeUnit;
 
