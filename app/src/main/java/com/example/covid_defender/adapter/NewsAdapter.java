@@ -51,6 +51,7 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
         holder.tvTitle.setText(newsList.get(position).getTitle());
         holder.tvDes.setText(newsList.get(position).getDescription());
         String imagePath = newsList.get(position).getImage();
+        if(imagePath!=null)
         new DownloadImageTask(holder.imvImage, imagePath)
                 .execute();
         holder.imvImage.setAdjustViewBounds(false);

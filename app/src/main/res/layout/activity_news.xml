@@ -6,10 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".presentation.NewsActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recNews"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recNews"
+            android:layout_width="match_parent"
+            android:layout_height="550dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPrevious"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginLeft="70dp"
+                android:onClick="onPrevious"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text="Previous"
+                android:textColor="#392F2F"
+                android:textSize="12sp"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Page"
+                android:textColor="#392F2F"
+                android:textSize="12sp"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onNext"
+                android:text="Next"
+                android:textColor="#392F2F"
+                android:textSize="12sp"
+                app:backgroundTint="#FFFFFF" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

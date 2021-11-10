@@ -35,7 +35,7 @@ public class ApiUtilities {
 
     public static ApiInterface getApiInterfaceNews() {
         if (retrofitNews == null) {
-            retrofitNews = new Retrofit.Builder().baseUrl(Constants.getBaseUrlNews()).client(getHttpClient()).addConverterFactory(GsonConverterFactory.create()).build();
+            retrofitNews = new Retrofit.Builder().baseUrl(Constants.BASE_URL_NEWS).client(getHttpClient()).addConverterFactory(GsonConverterFactory.create()).build();
         }
         return retrofitNews.create(ApiInterface.class);
     }
