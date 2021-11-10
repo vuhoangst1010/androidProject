@@ -94,9 +94,9 @@ public class NewsActivity extends AppCompatActivity {
             btnPrevious.setClickable(true);
             btnPrevious.setAlpha(1);
         }
-        if(page==Constants.TOTAL/Constants.PAGE_SIZE){
-            btnNext.setClickable(true);
-            btnNext.setAlpha(1);
+        if(page==(int)Constants.TOTAL/Constants.PAGE_SIZE){
+            btnNext.setClickable(false);
+            btnNext.setAlpha((float)0.4);
         }
 
         fetchDataNews(Constants.PAGE_SIZE, (page-1)*Constants.PAGE_SIZE);
