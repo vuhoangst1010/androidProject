@@ -23,9 +23,6 @@
             android:name="com.example.covid_defender.presentation.DataActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.covid_defender.presentation.MainActivity"
-            android:exported="true" />
-        <activity
             android:name="com.example.covid_defender.presentation.NewsActivity"
             android:exported="true" />
         <activity
